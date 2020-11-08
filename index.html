@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>The Weather App</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="src/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/16912dd421.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="container shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="row">
+            <div class="col-sm left-weather-info">
+                <div class="weather-now">
+                    <h1 class="temperature-now">
+                        <span id="temperature-now"> </span>°C
+                    </h1>
+                    <h4 class="switch"> <a href="#" class="switch-f">(°F)</a></span> <a href="#"
+                            class="switch-c">(°C)</a></h4>
+                    <h3 class="weather-condition" id="weather-condition">Sky</h3>
+                    <h4 class="today">Today</h4>
+                    <h4 class="max-min"> <span id="min-temp-now"></span>°C ↕ <span id="max-temp-now"></span> °C</h4>
+                </div>
+            </div>
+            <div class="col-sm city-details">
+                <h2 class="city-name">
+                    Search a City...
+                </h2>
+                <p class="date-today"></p>
+                <span class="search-current">
+                    <form class="input-group mb-3 change-city-search">
+                        <input type="text" class="form-control change-city-search" id="city-searched"
+                            placeholder="Seach city" aria-label="Recipient's username"
+                            aria-describedby="button-addon2" />
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary change-city-search" type="submit"
+                                id="button-addon2">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <button type="button" class="btn btn-outline-secondary change-city-search input-group-append"
+                        id="location-button">Current Location‏‏‎ ‎‏‏‎ ‎‎‎‎<i class="fas fa-map-marker-alt"></i></button>
+
+                </span>
+
+                <h3 class="rain">Humidity: <strong><span id="humidity-now"></span>%</strong></h3>
+                <h3 class="wind">Wind: <strong><span id="wind-now"></span> km/hr</strong></h3>
+            </div>
+        </div>
+
+        <h4 class="next-five">Next 5 days</h4>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <div class="card forecast-card">
+                    <div class="card-body forecast">
+                        <p>Tue</p>
+                        <h4>25°C</h4>
+                        <i class="far fa-circle temp-day-1"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card forecast-card">
+                    <div class="card-body forecast">
+                        <p>Wed</p>
+                        <h4>14°C</h4>
+                        <i class="far fa-circle temp-day-2"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card forecast-card">
+                    <div class="card-body forecast">
+                        <p>Thu</p>
+                        <h4>5°C</h4>
+                        <i class="far fa-circle temp-day-3"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card forecast-card">
+                    <div class="card-body forecast">
+                        <p>Fri</p>
+                        <h4>-1°C</h4>
+                        <i class="far fa-circle temp-day-4"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card forecast-card">
+                    <div class="card-body forecast">
+                        <p>Sat</p>
+                        <h4>-7°C</h4>
+                        <i class="far fa-circle temp-day-5"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="progress">
+            <div class="progress-bar temp-min-15" role="progressbar" style="width: 14.2857142857%;"
+                aria-valuenow="14.2857142857" aria-valuemin="0" aria-valuemax="100">
+                -15°C
+            </div>
+            <div class="progress-bar temp-min-14-5" role="progressbar" style="width: 14.2857142857%;"
+                aria-valuenow="14.2857142857" aria-valuemin="0" aria-valuemax="100">
+                -5°C
+            </div>
+            <div class="progress-bar temp-min-4-0" role="progressbar" style="width: 14.2857142857%;"
+                aria-valuenow="14.2857142857" aria-valuemin="0" aria-valuemax="100">
+                -0°C
+            </div>
+            <div class="progress-bar temp-max-1-5" class="progress-bar" role="progressbar"
+                style="width: 14.2857142857%;" aria-valuenow="14.2857142857" aria-valuemin="0" aria-valuemax="100">
+                5°C
+            </div>
+            <div class="progress-bar temp-max-6-15" role="progressbar" style="width: 14.2857142857%;"
+                aria-valuenow="14.2857142857" aria-valuemin="0" aria-valuemax="100">
+                15°C
+            </div>
+            <div class="progress-bar temp-max-16-25" role="progressbar" style="width: 14.2857142857%;"
+                aria-valuenow="14.2857142857" aria-valuemin="0" aria-valuemax="100">
+                25ºC
+            </div>
+            <div class="progress-bar temp-max-26-35" role="progressbar" style="width: 14.2857142857%;"
+                aria-valuenow="14.2857142857" aria-valuemin="0" aria-valuemax="100">
+                35°C
+            </div>
+        </div>
+
+        <script src="src/index.js"></script>
+    </div>
+</body>
+
+</html>
