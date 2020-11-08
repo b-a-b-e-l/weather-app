@@ -139,3 +139,8 @@ h4 {
 .input-group-append {
   display: inline;
 }
+.footer {
+  font-size: 11px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  text-align: center;
+}
