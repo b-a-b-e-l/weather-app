@@ -1,3 +1,9 @@
+hr {
+  margin: 10px;
+}
+h4 {
+  margin: 8px 0;
+}
 .container {
   max-width: 53%;
   margin-top: 103px;
@@ -28,7 +34,9 @@
   font-size: 35px;
   font-style: italic;
 }
-
+.date-today {
+  margin-bottom: 10px;
+}
 .today {
   font-weight: 600;
   margin-top: 15px;
@@ -41,11 +49,6 @@
 
 .next-five {
   margin: 20px 0 0 10px;
-}
-
-hr {
-  margin: 10px;
-  color: blueviolet;
 }
 
 .forecast-card {
@@ -62,30 +65,24 @@ hr {
   padding: 0 50px;
   max-width: 450px;
 }
-h4 {
-  margin: 8px 0;
-}
 
 .city-name {
   font-size: 60px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
-.change-city-search,
-.input-group-append {
-  font-size: 10px;
+.form-buttons {
+  margin: 10px 0;
+}
+.change-city-search {
+  font-size: 12px;
   text-align: right;
   display: inline-flex;
   line-height: 1.5 !important;
+  max-width: 350px;
+  position: relative;
 }
-.input-group,
-.input-group-append {
-  font-size: 10px;
-  max-width: 200px;
-  display: inline-flex;
-  margin: 0 50 0 0;
-}
-.fas,
-.fa-search {
+
+.fas {
   line-height: 1.5 !important;
 }
 .temp-max-26-35 {
@@ -130,7 +127,6 @@ h4 {
 .progress {
   margin: 10px;
 }
-
 .wind,
 .rain {
   margin: 15px 0;
