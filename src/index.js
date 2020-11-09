@@ -23,21 +23,25 @@ function formatDate(timestamp) {
 
 function showWeatherValues(response) {
   cityCurrent.innerHTML = response.data.name;
+  celciusTempreatureNow = response.data.main.temp
   let temperatureNow = document.querySelector("#temperature-now");
-  temperatureNow.innerHTML = Math.round(response.data.main.temp);
+  temperatureNow.innerHTML = Math.round(celciusTempreatureNow) + "°C";
+  celciusTempreatureMax = response.data.main.temp_max;
   let maxTemperatureNow = document.querySelector("#max-temp-now");
-  maxTemperatureNow.innerHTML = Math.round(response.data.main.temp_max);
+  maxTemperatureNow.innerHTML = Math.round( celciusTempreatureMax) + "°C";
+  celciusTempreatureMin = response.data.main.temp_min;
   let minTemperatureNow = document.querySelector("#min-temp-now");
-  minTemperatureNow.innerHTML = Math.round(response.data.main.temp_min);
+  minTemperatureNow.innerHTML = Math.round(celciusTempreatureMin) + "°C";
   let humidityNow = document.querySelector("#humidity-now");
   humidityNow.innerHTML = response.data.main.humidity;
+  windMeterSeconds = response.data.wind.speed
   let windNow = document.querySelector("#wind-now");
-  windNow.innerHTML = Math.round(response.data.wind.speed * 3.6);
+  windNow.innerHTML = Math.round(3.6 * windMeterSeconds)+ "km/h";
   let weatherCondition = document.querySelector("#weather-condition");
   weatherCondition.innerHTML = response.data.weather[0].main;
   let currentDate = document.querySelector("#date-today");
   currentDate.innerHTML = formatDate(response.data.dt *1000)
-  
+  console.log(response.data)
 
 }
 
@@ -59,8 +63,45 @@ function getCurrentLocation(event) {
     axios.get(`${apiUrl}&appid=${apiKey}`).then(showWeatherValues);
   }
 }
+function convertFahrenheit(event) {
+  event.preventDefault();
+  let temperatureNow = document.querySelector("#temperature-now");
+  let fahrenheitTemperatureNow = (celciusTempreatureNow * 9) / 5 + 32; 
+  temperatureNow.innerHTML = Math.round(fahrenheitTemperatureNow) + "°F";
+  let maxTemperature = document.querySelector("#max-temp-now");
+  let maxFahrenheitTemperature = (celciusTempreatureMax * 9) / 5 + 32;
+  maxTemperature.innerHTML = Math.round( maxFahrenheitTemperature) + "°F";
+  let minTemperature = document.querySelector("#min-temp-now");
+  let minFahrenheitTemperature = (celciusTempreatureMin * 9) / 5 + 32;
+  minTemperature.innerHTML = Math.round( minFahrenheitTemperature) + "°F";
+  let windNow = document.querySelector("#wind-now");
+  windNow.innerHTML = Math.round( 2.23694 * windMeterSeconds)+ "mph";
+
+}
+
+function convertCelsius(event) {
+  event.preventDefault();
+  let temperatureNow = document.querySelector("#temperature-now");
+  temperatureNow.innerHTML = Math.round(celciusTempreatureNow)+ "°C";
+  let maxTemperatureNow = document.querySelector("#max-temp-now");
+  maxTemperatureNow.innerHTML = Math.round( celciusTempreatureMax) + "°C";
+  let minTemperatureNow = document.querySelector("#min-temp-now");
+  minTemperatureNow.innerHTML = Math.round(celciusTempreatureMin) + "°C";
+  let windNow = document.querySelector("#wind-now");
+  windNow.innerHTML = Math.round(3.6 * windMeterSeconds)+ "km/h";
+}
 let cityCurrent = document.querySelector(".city-name");
 let cityForm = document.querySelector(".change-city-search");
 cityForm.addEventListener("submit", searchCity);
 let locationButton = document.querySelector("#location-button");
 locationButton.addEventListener("click", getCurrentLocation);
+
+
+let celciusTempreatureNow = null;
+let celciusTempreatureMax = null;
+let celciusTempreatureMin = null;
+let windMeterSeconds = null
+let fahrenheitLink = document.querySelector(".switch-f");
+fahrenheitLink.addEventListener("click", convertFahrenheit);
+let celsiusLink = document.querySelector(".switch-c");
+celsiusLink.addEventListener("click", convertCelsius);
