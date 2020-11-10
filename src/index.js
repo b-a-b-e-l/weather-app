@@ -40,7 +40,7 @@ function showWeatherValues(response) {
   let weatherCondition = document.querySelector("#weather-condition");
   weatherCondition.innerHTML = response.data.weather[0].main;
   let currentDate = document.querySelector("#date-today");
-  currentDate.innerHTML = formatDate(response.data.dt *1000)
+  currentDate.innerHTML = formatDate(response.data.dt * 1000 +(response.data.timezone * 1000));
   console.log(response.data)
 
 }
