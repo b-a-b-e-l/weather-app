@@ -42,7 +42,36 @@ function showWeatherValues(response) {
   let currentDate = document.querySelector("#date-today");
   currentDate.innerHTML = formatDate(response.data.dt * 1000 +(response.data.timezone * 1000));
   console.log(response.data)
-
+  let colorTempNow = document.querySelector("#weather-now");
+  if (celciusTempreatureNow < -5) {
+    colorTempNow.classList.add("temp-neg-5");
+    colorTempNow.classList.add("white-font");
+    colorTempNow.classList.remove("temp-neg-4-0","temp-pos-1-5","temp-pos-6-10","temp-pos-11-15","temp-pos-16-20","temp-pos-21-25")
+  } else if (celciusTempreatureNow <= 0 && celciusTempreatureNow >= -4) {
+    colorTempNow.classList.add("temp-neg-4-0");
+    colorTempNow.classList.add("white-font");
+    colorTempNow.classList.remove("temp-neg-5","temp-pos-1-5","temp-pos-6-10","temp-pos-11-15","temp-pos-16-20","temp-pos-21-25")
+}  else if (celciusTempreatureNow <= 5 && celciusTempreatureNow >= 1) {
+    colorTempNow.classList.add("temp-pos-1-5");
+    colorTempNow.classList.add("grey-font");
+    colorTempNow.classList.remove("temp-neg-5","temp-neg-4-0","temp-pos-6-10","temp-pos-11-15","temp-pos-16-20","temp-pos-21-25")
+} else if (celciusTempreatureNow <= 10 && celciusTempreatureNow >= 6) {
+    colorTempNow.classList.add("temp-pos-6-10");
+    colorTempNow.classList.add("grey-font");
+    colorTempNow.classList.remove("temp-neg-5","temp-neg-4-0","temp-pos-1-5","temp-pos-11-15","temp-pos-16-20","temp-pos-21-25")
+} else if (celciusTempreatureNow <= 15 && celciusTempreatureNow >= 11) {
+    colorTempNow.classList.add("temp-pos-11-15");
+    colorTempNow.classList.add("grey-font");
+    colorTempNow.classList.remove("temp-neg-5","temp-neg-4-0","temp-pos-1-5","temp-pos-6-10","temp-pos-16-20","temp-pos-21-25")
+} else if (celciusTempreatureNow <= 20 && celciusTempreatureNow >= 16) {
+    colorTempNow.classList.add("temp-pos-16-20");
+    colorTempNow.classList.add("grey-font");
+    colorTempNow.classList.remove("temp-neg-5","temp-neg-4-0","temp-pos-1-5","temp-pos-6-10","temp-pos-11-15","temp-pos-21-25")
+} else if (celciusTempreatureNow <= 20 && celciusTempreatureNow >= 16) {
+    colorTempNow.classList.add("temp-pos-21-25");
+    colorTempNow.classList.add("white-font");
+    colorTempNow.classList.remove("temp-neg-5","temp-neg-4-0","temp-pos-1-5","temp-pos-6-10","temp-pos-11-15","temp-pos-16-20",)
+}
 }
 
 function searchCity(event) {

@@ -85,44 +85,80 @@ h4 {
 .fas {
   line-height: 1.5 !important;
 }
-.temp-max-26-35 {
+.temp-pos-21-25 {
+  color: #e40000;
   background: #e40000;
 }
-.temp-max-16-25 {
+.temp-pos-16-20 {
+  color: #f8b705;
   background: #f8b705;
 }
-.temp-max-6-15 {
+.temp-pos-11-15 {
+  color: #e1ff16;
   background: #e1ff16;
-  color: #676767;
 }
-.temp-max-1-5 {
+.temp-pos-6-10 {
+  color: #5dff9a;
   background: #5dff9a;
-  color: #676767;
 }
-.temp-min-4-0 {
+.temp-pos-1-5 {
+  color: #4cd9ff;
   background: #4cd9ff;
-  color: #676767;
 }
-.temp-min-14-5 {
+.temp-neg-4-0 {
+  color: #1e11ff;
   background: #1e11ff;
 }
-.temp-min-15 {
+.temp-neg-5 {
+  color: #0d0aaf;
   background: #0d0aaf;
 }
+#temp-pos-21-25 {
+  background: #e40000 !important;
+}
+#temp-pos-16-20 {
+  background: #f8b705 !important;
+}
+#temp-pos-11-15 {
+  background: #e1ff16 !important;
+}
+#temp-pos-6-10 {
+  background: #5dff9a !important;
+}
+#temp-pos-1-5 {
+  background: #4cd9ff !important;
+}
+#temp-neg-4-0 {
+  background: #1e11ff !important;
+}
+#temp-neg-5 {
+  background: #0d0aaf !important;
+}
+.white-font {
+  color: #f8f8f8 !important;
+}
+.grey-font {
+  color: #787878 !important;
+}
 .temp-day-1 {
-  color: #e40000;
+  color: #3e817a;
+  background-color: #fff !important;
 }
 .temp-day-2 {
-  color: #e1ff16;
+  color: #3e817a;
+  background-color: #fff !important;
 }
 .temp-day-3 {
-  color: #5dff9a;
+  color: #3e817a;
+  background-color: #fff !important;
 }
 .temp-day-4 {
-  color: #4cd9ff;
+  color: #3e817a;
+  background-color: #fff !important;
 }
 .temp-day-5 {
-  color: #1e11ff;
+  color: #3e817a;
+  background-color: #fff !important;
 }
 .progress {
   margin: 10px;
