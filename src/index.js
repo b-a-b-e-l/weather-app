@@ -24,7 +24,7 @@ function formatDate(timestamp) {
 function getLocationTime(response){
   console.log(response.data.timestamp)
   let currentDate = document.querySelector("#date-today");
-  currentDate.innerHTML = formatDate(response.timestamp * 1000);
+  currentDate.innerHTML = formatDate(response.data.timestamp * 1000);
 }
 
 function showWeatherValues(response) {
@@ -50,10 +50,8 @@ function showWeatherValues(response) {
   let timeDbKey = "S4RXUE2ZUA4K";
   let timeDbUrl = `https://api.timezonedb.com/v2.1/get-time-zone?key=${timeDbKey}&format=json&by=position&lat=${lat}&lng=${lon}`;
   axios.get(`${timeDbUrl}`).then(getLocationTime);
-    
   console.log(response.data)
   let colorTempNow = document.querySelector("#weather-now");
-
   if (celciusTempreatureNow < -5) {
     colorTempNow.classList.add("temp-neg-5");
     colorTempNow.classList.add("white-font");
