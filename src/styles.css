@@ -15,9 +15,9 @@ h4 {
 }
 .weather-now {
   text-align: center;
-  border: 1px solid #f8b705;
+  border: 1px solid #3e817a;
   border-radius: 50%;
-  background: RGBA(248, 183, 5, 0.4);
+  background: #fff;
   margin: 5px 20px;
   padding: 40px 0;
 }

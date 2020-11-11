@@ -21,6 +21,12 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function getLocationTime(response){
+  console.log(response.data.timestamp)
+  let currentDate = document.querySelector("#date-today");
+  currentDate.innerHTML = formatDate(response.timestamp * 1000);
+}
+
 function showWeatherValues(response) {
   cityCurrent.innerHTML = response.data.name;
   celciusTempreatureNow = response.data.main.temp
@@ -39,10 +45,15 @@ function showWeatherValues(response) {
   windNow.innerHTML = Math.round(3.6 * windMeterSeconds)+ "km/h";
   let weatherCondition = document.querySelector("#weather-condition");
   weatherCondition.innerHTML = response.data.weather[0].main;
-  let currentDate = document.querySelector("#date-today");
-  currentDate.innerHTML = formatDate(response.data.dt * 1000 +(response.data.timezone * 1000));
+  let lat = response.data.coord.lat;
+  let lon = response.data.coord.lon;
+  let timeDbKey = "S4RXUE2ZUA4K";
+  let timeDbUrl = `https://api.timezonedb.com/v2.1/get-time-zone?key=${timeDbKey}&format=json&by=position&lat=${lat}&lng=${lon}`;
+  axios.get(`${timeDbUrl}`).then(getLocationTime);
+    
   console.log(response.data)
   let colorTempNow = document.querySelector("#weather-now");
+
   if (celciusTempreatureNow < -5) {
     colorTempNow.classList.add("temp-neg-5");
     colorTempNow.classList.add("white-font");
@@ -99,6 +110,7 @@ function getCurrentLocation(event) {
     axios.get(`${apiUrl}&appid=${apiKey}`).then(showWeatherValues);
   }
 }
+
 function convertFahrenheit(event) {
   event.preventDefault();
   let temperatureNow = document.querySelector("#temperature-now");
@@ -126,6 +138,7 @@ function convertCelsius(event) {
   let windNow = document.querySelector("#wind-now");
   windNow.innerHTML = Math.round(3.6 * windMeterSeconds)+ "km/h";
 }
+
 let cityCurrent = document.querySelector(".city-name");
 let cityForm = document.querySelector(".change-city-search");
 cityForm.addEventListener("submit", searchCity);
@@ -137,6 +150,7 @@ let celciusTempreatureNow = null;
 let celciusTempreatureMax = null;
 let celciusTempreatureMin = null;
 let windMeterSeconds = null
+
 let fahrenheitLink = document.querySelector(".switch-f");
 fahrenheitLink.addEventListener("click", convertFahrenheit);
 let celsiusLink = document.querySelector(".switch-c");
