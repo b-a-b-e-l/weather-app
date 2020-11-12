@@ -22,9 +22,24 @@ function formatDate(timestamp) {
 }
 
 function getLocationTime(response){
-  console.log(response.data.timestamp)
   let currentDate = document.querySelector("#date-today");
+  console.log(response)
   currentDate.innerHTML = formatDate(response.data.timestamp * 1000);
+}
+
+function formatForecastDate (timestamp) {
+  let date = new Date(timestamp);
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  return `${day}`;
 }
 
 function showWeatherValues(response) {
@@ -50,7 +65,6 @@ function showWeatherValues(response) {
   let timeDbKey = "S4RXUE2ZUA4K";
   let timeDbUrl = `https://api.timezonedb.com/v2.1/get-time-zone?key=${timeDbKey}&format=json&by=position&lat=${lat}&lng=${lon}`;
   axios.get(`${timeDbUrl}`).then(getLocationTime);
-  console.log(response.data)
   let colorTempNow = document.querySelector("#weather-now");
   if (celciusTempreatureNow < -5) {
     colorTempNow.classList.add("temp-neg-5");
@@ -89,6 +103,29 @@ function showWeatherValues(response) {
     colorTempNow.classList.remove("grey-font");
     }
     }
+function showForecastValues(response) {
+  forecastValues = response.data.list
+  let tempOne = document.querySelector("#forcast-temp-1");
+  tempOne.innerHTML = Math.round(forecastValues[7].main.temp) + "°C";
+  let tempTwo = document.querySelector("#forcast-temp-2");
+  tempTwo.innerHTML = Math.round(forecastValues[15].main.temp) + "°C";
+  let tempThree = document.querySelector("#forcast-temp-3");
+  tempThree.innerHTML = Math.round(forecastValues[23].main.temp) + "°C";
+  let tempFour = document.querySelector("#forcast-temp-4");
+  tempFour.innerHTML = Math.round(forecastValues[31].main.temp) + "°C";
+  let tempFive = document.querySelector("#forcast-temp-5");
+  tempFive.innerHTML = Math.round(forecastValues[39].main.temp) + "°C";
+  let dayOne = document.querySelector("#day-forecast-1");
+  dayOne.innerHTML = formatForecastDate(forecastValues[7].dt * 1000);
+  let dayTwo = document.querySelector("#day-forecast-2");
+  dayTwo.innerHTML = formatForecastDate(forecastValues[15].dt * 1000);
+  let dayThree = document.querySelector("#day-forecast-3");
+  dayThree.innerHTML = formatForecastDate(forecastValues[23].dt * 1000);
+  let dayFour = document.querySelector("#day-forecast-4");
+  dayFour.innerHTML = formatForecastDate(forecastValues[31].dt * 1000);
+  let dayFive = document.querySelector("#day-forecast-5");
+  dayFive.innerHTML = formatForecastDate(forecastValues[39].dt * 1000);
+}
 
 function searchCity(event) {
   event.preventDefault();
@@ -96,6 +133,9 @@ function searchCity(event) {
   let cityInput = document.querySelector("#city-searched").value;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${apiKey}&units=metric`;
   axios.get(`${apiUrl}`).then(showWeatherValues);
+  let forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityInput}&appid=${apiKey}&units=metric`;
+  axios.get(`${forecastUrl}`).then(showForecastValues);
+
 }
 
 function getCurrentLocation(event) {
@@ -122,7 +162,6 @@ function convertFahrenheit(event) {
   minTemperature.innerHTML = Math.round( minFahrenheitTemperature) + "°F";
   let windNow = document.querySelector("#wind-now");
   windNow.innerHTML = Math.round( 2.23694 * windMeterSeconds)+ "mph";
-
 }
 
 function convertCelsius(event) {
