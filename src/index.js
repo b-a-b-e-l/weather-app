@@ -143,9 +143,13 @@ function getCurrentLocation(event) {
   function findLocation(position) {
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
+    console.log(latitude);
+    console.log(longitude);
     let apiKey = "44b265d1d7325d3b65b118085f75bc5c";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric`;
     axios.get(`${apiUrl}&appid=${apiKey}`).then(showWeatherValues);
+    let forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric`;
+    axios.get(`${forecastUrl}&appid=${apiKey}`).then(showForecastValues);
   }
 }
 
