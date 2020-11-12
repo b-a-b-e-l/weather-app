@@ -5,12 +5,12 @@ h4 {
   margin: 8px 0;
 }
 .container {
-  max-width: 53%;
+  max-width: 888px;
   margin-top: 103px;
   border: 1px solid transparent;
   padding: 20px;
   font-family: "M PLUS Rounded 1c", sans-serif;
-  color: #3e817a;
+  color: #5dc6ac;
   border-radius: 10px;
 }
 .weather-now {
@@ -48,11 +48,16 @@ h4 {
 }
 
 .next-five {
-  margin: 20px 0 0 10px;
+  margin: 15px 0 0 10px;
 }
-
+.forecast {
+  padding: 11px 11px 8px 11px;
+}
+.forecast-card-group {
+  margin: 0 7px 0 7px;
+}
 .forecast-card {
-  margin: 10px;
+  margin: 4px;
   text-align: center;
   padding: 5px;
   border-radius: 10px;
@@ -60,9 +65,10 @@ h4 {
 
 .city-details {
   text-align: right;
+  padding-left: 0;
 }
 .left-weather-info {
-  padding: 0 50px;
+  padding: 0 10px;
   max-width: 450px;
 }
 
@@ -81,58 +87,60 @@ h4 {
   max-width: 350px;
   position: relative;
 }
-
+.col {
+  padding: 0px;
+}
 .fas {
   line-height: 1.5 !important;
 }
 .temp-pos-21-25 {
-  color: #e40000;
-  background: #e40000;
+  color: #fe4c40;
+  background: #fe4c40;
 }
 .temp-pos-16-20 {
-  color: #f8b705;
-  background: #f8b705;
+  color: #ffae42;
+  background: #ffae42;
 }
 .temp-pos-11-15 {
-  color: #e1ff16;
-  background: #e1ff16;
+  color: #ffff66;
+  background: #ffff66;
 }
 .temp-pos-6-10 {
-  color: #5dff9a;
-  background: #5dff9a;
+  color: #cbfdca;
+  background: #cbfdca;
 }
 .temp-pos-1-5 {
-  color: #4cd9ff;
-  background: #4cd9ff;
+  color: #9decf9;
+  background: #9decf9;
 }
 .temp-neg-4-0 {
-  color: #1e11ff;
-  background: #1e11ff;
+  color: #5e72eb;
+  background: #5e72eb;
 }
 .temp-neg-5 {
-  color: #0d0aaf;
-  background: #0d0aaf;
+  color: #3c4cac;
+  background: #3c4cac;
 }
 #temp-pos-21-25 {
-  background: #e40000 !important;
+  background: #fe4c40 !important;
 }
 #temp-pos-16-20 {
-  background: #f8b705 !important;
+  background: #ffae42 !important;
 }
 #temp-pos-11-15 {
-  background: #e1ff16 !important;
+  background: #ffff66 !important;
 }
 #temp-pos-6-10 {
-  background: #5dff9a !important;
+  background: #cbfdca !important;
 }
 #temp-pos-1-5 {
-  background: #4cd9ff !important;
+  background: #9decf9 !important;
 }
 #temp-neg-4-0 {
-  background: #1e11ff !important;
+  background: #5e72eb !important;
 }
 #temp-neg-5 {
-  background: #0d0aaf !important;
+  background: #3c4cac !important;
 }
 .white-font {
   color: #f8f8f8 !important;
@@ -140,25 +148,9 @@ h4 {
 .grey-font {
   color: #787878 !important;
 }
-.temp-day-1 {
-  color: #3e817a;
+.fa-circle {
   background-color: #fff !important;
-}
-.temp-day-2 {
-  color: #3e817a;
-  background-color: #fff !important;
-}
-.temp-day-3 {
-  color: #3e817a;
-  background-color: #fff !important;
-}
-.temp-day-4 {
-  color: #3e817a;
-  background-color: #fff !important;
-}
-.temp-day-5 {
-  color: #3e817a;
-  background-color: #fff !important;
+  font-size: 26px;
 }
 .progress {
   margin: 10px;

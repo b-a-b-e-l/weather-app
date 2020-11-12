@@ -66,55 +66,88 @@ function showWeatherValues(response) {
   let timeDbUrl = `https://api.timezonedb.com/v2.1/get-time-zone?key=${timeDbKey}&format=json&by=position&lat=${lat}&lng=${lon}`;
   axios.get(`${timeDbUrl}`).then(getLocationTime);
   let colorTempNow = document.querySelector("#weather-now");
+  let colorForecast = document.querySelectorAll(".fa-circle");
   if (celciusTempreatureNow < -5) {
     colorTempNow.classList.add("temp-neg-5");
     colorTempNow.classList.add("white-font");
     colorTempNow.classList.remove("temp-neg-4-0","temp-pos-1-5","temp-pos-6-10","temp-pos-11-15","temp-pos-16-20","temp-pos-21-25");
-    colorTempNow.classList.remove("grey-font");
-   } else if (celciusTempreatureNow <= 0 && celciusTempreatureNow >= -4) {
+    for(i = 0, length = colorForecast.length; i < length; i++) {
+    colorForecast[i].classList.add("temp-neg-5");
+    colorForecast[i].classList.remove("temp-neg-4-0","temp-pos-1-5","temp-pos-6-10","temp-pos-11-15","temp-pos-16-20","temp-pos-21-25");
+    }
+    } else if (celciusTempreatureNow <= 0 && celciusTempreatureNow >= -4) {
     colorTempNow.classList.add("temp-neg-4-0");
     colorTempNow.classList.add("white-font");
     colorTempNow.classList.remove("temp-neg-5","temp-pos-1-5","temp-pos-6-10","temp-pos-11-15","temp-pos-16-20","temp-pos-21-25");
     colorTempNow.classList.remove("grey-font");
+    for(i = 0, length = colorForecast.length; i < length; i++) {
+    colorForecast[i].classList.add("temp-neg-4-0");
+    colorForecast[i].classList.remove("temp-neg-5","temp-pos-1-5","temp-pos-6-10","temp-pos-11-15","temp-pos-16-20","temp-pos-21-25");
+    }
    }  else if (celciusTempreatureNow <= 5 && celciusTempreatureNow >= 1) {
     colorTempNow.classList.add("temp-pos-1-5");
     colorTempNow.classList.add("grey-font");
     colorTempNow.classList.remove("temp-neg-5","temp-neg-4-0","temp-pos-6-10","temp-pos-11-15","temp-pos-16-20","temp-pos-21-25");
     colorTempNow.classList.remove("white-font");
+    for(i = 0, length = colorForecast.length; i < length; i++) {
+    colorForecast[i].classList.add("temp-pos-1-5");
+    colorForecast[i].classList.remove("temp-neg-5","temp-neg-4-0","temp-pos-6-10","temp-pos-11-15","temp-pos-16-20","temp-pos-21-25");
+    }
    } else if (celciusTempreatureNow <= 10 && celciusTempreatureNow >= 6) {
     colorTempNow.classList.add("temp-pos-6-10");
     colorTempNow.classList.add("grey-font");
     colorTempNow.classList.remove("temp-neg-5","temp-neg-4-0","temp-pos-1-5","temp-pos-11-15","temp-pos-16-20","temp-pos-21-25");
     colorTempNow.classList.remove("white-font");
+    for(i = 0, length = colorForecast.length; i < length; i++) {
+    colorForecast[i].classList.add("temp-pos-6-10");
+    colorForecast[i].classList.remove("temp-neg-5","temp-neg-4-0","temp-pos-1-5","temp-pos-11-15","temp-pos-16-20","temp-pos-21-25");
+    }
     } else if (celciusTempreatureNow <= 15 && celciusTempreatureNow >= 11) {
     colorTempNow.classList.add("temp-pos-11-15");
     colorTempNow.classList.add("grey-font");
     colorTempNow.classList.remove("temp-neg-5","temp-neg-4-0","temp-pos-1-5","temp-pos-6-10","temp-pos-16-20","temp-pos-21-25");
     colorTempNow.classList.remove("white-font");
+    for(i = 0, length = colorForecast.length; i < length; i++) {
+    colorForecast[i].classList.add("temp-pos-11-15");
+    colorForecast[i].classList.remove("temp-neg-5","temp-neg-4-0","temp-pos-1-5","temp-pos-6-10","temp-pos-16-20","temp-pos-21-25");
+    }
     } else if (celciusTempreatureNow <= 20 && celciusTempreatureNow >= 16) {
     colorTempNow.classList.add("temp-pos-16-20");
     colorTempNow.classList.add("grey-font");
     colorTempNow.classList.remove("temp-neg-5","temp-neg-4-0","temp-pos-1-5","temp-pos-6-10","temp-pos-11-15","temp-pos-21-25");
     colorTempNow.classList.remove("white-font");
+    for(i = 0, length = colorForecast.length; i < length; i++) {
+    colorForecast[i].classList.add("temp-pos-16-20");
+    colorForecast[i].classList.remove("temp-neg-5","temp-neg-4-0","temp-pos-1-5","temp-pos-6-10","temp-pos-11-15","temp-pos-21-25");
+    }
     } else if (celciusTempreatureNow >= 21) {
     colorTempNow.classList.add("temp-pos-21-25");
     colorTempNow.classList.add("white-font");
-    colorTempNow.classList.remove("temp-neg-5","temp-neg-4-0","temp-pos-1-5","temp-pos-6-10","temp-pos-11-15","temp-pos-16-20",);
+    colorTempNow.classList.remove("temp-neg-5","temp-neg-4-0","temp-pos-1-5","temp-pos-6-10","temp-pos-11-15","temp-pos-16-20");
     colorTempNow.classList.remove("grey-font");
+    for(i = 0, length = colorForecast.length; i < length; i++) {
+    colorForecast[i].classList.add("temp-pos-21-25");
+    colorForecast[i].classList.remove("temp-neg-5","temp-neg-4-0","temp-pos-1-5","temp-pos-6-10","temp-pos-11-15","temp-pos-16-20");
+    }
     }
     }
 function showForecastValues(response) {
   forecastValues = response.data.list
   let tempOne = document.querySelector("#forcast-temp-1");
-  tempOne.innerHTML = Math.round(forecastValues[7].main.temp) + "°C";
+  celciusForecastOne = forecastValues[7].main.temp;
+  tempOne.innerHTML = Math.round(celciusForecastOne) + "°C";
   let tempTwo = document.querySelector("#forcast-temp-2");
-  tempTwo.innerHTML = Math.round(forecastValues[15].main.temp) + "°C";
+  celciusForecastTwo = forecastValues[15].main.temp;
+  tempTwo.innerHTML = Math.round(celciusForecastTwo) + "°C";
   let tempThree = document.querySelector("#forcast-temp-3");
-  tempThree.innerHTML = Math.round(forecastValues[23].main.temp) + "°C";
+  celciusForecastThree = forecastValues[23].main.temp;
+  tempThree.innerHTML = Math.round(celciusForecastThree) + "°C";
   let tempFour = document.querySelector("#forcast-temp-4");
-  tempFour.innerHTML = Math.round(forecastValues[31].main.temp) + "°C";
+  celciusForecastFour = forecastValues[31].main.temp;
+  tempFour.innerHTML = Math.round(celciusForecastFour) + "°C";
   let tempFive = document.querySelector("#forcast-temp-5");
-  tempFive.innerHTML = Math.round(forecastValues[39].main.temp) + "°C";
+  celciusForecastFive = forecastValues[39].main.temp
+  tempFive.innerHTML = Math.round(celciusForecastFive) + "°C";
   let dayOne = document.querySelector("#day-forecast-1");
   dayOne.innerHTML = formatForecastDate(forecastValues[7].dt * 1000);
   let dayTwo = document.querySelector("#day-forecast-2");
@@ -166,6 +199,21 @@ function convertFahrenheit(event) {
   minTemperature.innerHTML = Math.round( minFahrenheitTemperature) + "°F";
   let windNow = document.querySelector("#wind-now");
   windNow.innerHTML = Math.round( 2.23694 * windMeterSeconds)+ "mph";
+  let tempOne = document.querySelector("#forcast-temp-1");
+  let fahrenheiForecastOne = (celciusForecastOne * 9) / 5 + 32;
+  tempOne.innerHTML = Math.round(fahrenheiForecastOne) + "°F";
+  let tempTwo = document.querySelector("#forcast-temp-2");
+  let fahrenheiForecastTwo = (celciusForecastTwo * 9) / 5 + 32;
+  tempTwo.innerHTML = Math.round(fahrenheiForecastTwo) + "°F";
+  let tempThree = document.querySelector("#forcast-temp-3");
+  let fahrenheiForecastThree = (celciusForecastThree * 9) / 5 + 32;
+  tempThree.innerHTML = Math.round(fahrenheiForecastThree) + "°F";
+  let tempFour = document.querySelector("#forcast-temp-4");
+  let fahrenheiForecastFour = (celciusForecastOne * 9) / 5 + 32;
+  tempFour.innerHTML = Math.round(fahrenheiForecastFour) + "°F";
+  let tempFive = document.querySelector("#forcast-temp-5");
+  let fahrenheiForecastFive = (celciusForecastFive * 9) / 5 + 32;
+  tempFive.innerHTML = Math.round(fahrenheiForecastFive) + "°F";
 }
 
 function convertCelsius(event) {
@@ -178,6 +226,16 @@ function convertCelsius(event) {
   minTemperatureNow.innerHTML = Math.round(celciusTempreatureMin) + "°C";
   let windNow = document.querySelector("#wind-now");
   windNow.innerHTML = Math.round(3.6 * windMeterSeconds)+ "km/h";
+  let tempOne = document.querySelector("#forcast-temp-1");
+  tempOne.innerHTML = Math.round(celciusForecastOne) + "°C";
+  let tempTwo = document.querySelector("#forcast-temp-2");
+  tempTwo.innerHTML = Math.round(celciusForecastTwo) + "°C";
+  let tempThree = document.querySelector("#forcast-temp-3");
+  tempThree.innerHTML = Math.round(celciusForecastThree) + "°C";
+  let tempFour = document.querySelector("#forcast-temp-4");
+  tempFour.innerHTML = Math.round(celciusForecastFour) + "°C";
+  let tempFive = document.querySelector("#forcast-temp-5");
+  tempFive.innerHTML = Math.round(celciusForecastFive) + "°C";
 }
 
 let cityCurrent = document.querySelector(".city-name");
@@ -190,7 +248,12 @@ locationButton.addEventListener("click", getCurrentLocation);
 let celciusTempreatureNow = null;
 let celciusTempreatureMax = null;
 let celciusTempreatureMin = null;
-let windMeterSeconds = null
+let windMeterSeconds = null;
+let celciusForecastOne = null;
+let celciusForecastTwo = null;
+let celciusForecastThree = null;
+let celciusForecastFour = null;
+let celciusForecastFive = null;
 
 let fahrenheitLink = document.querySelector(".switch-f");
 fahrenheitLink.addEventListener("click", convertFahrenheit);
