@@ -1,6 +1,7 @@
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
+  hours = hours -1;
   let minutes = date.getMinutes();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -18,7 +19,7 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let day = days[date.getDay()];
-  return `${day} ${hours -1}:${minutes}`;
+  return `${day} ${hours}:${minutes}`;
 }
 
 function getLocationTime(response){
