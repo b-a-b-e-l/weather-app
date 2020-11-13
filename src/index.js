@@ -18,13 +18,13 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let day = days[date.getDay()];
-  return `${day} ${hours}:${minutes}`;
+  return `${day} ${hours -1}:${minutes}`;
 }
 
 function getLocationTime(response){
   let currentDate = document.querySelector("#date-today");
   console.log(response.data)
-  currentDate.innerHTML = formatDate(response.data.timestamp *1000);
+  currentDate.innerHTML = formatDate((response.data.timestamp *1000));
 }
 
 function formatForecastDate (timestamp) {
