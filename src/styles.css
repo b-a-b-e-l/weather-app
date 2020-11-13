@@ -35,7 +35,7 @@ h4 {
   font-style: italic;
 }
 .date-today {
-  margin-bottom: 10px;
+  margin: 0 15px 10px 0;
 }
 .today {
   font-weight: 600;
@@ -69,7 +69,6 @@ h4 {
 }
 .left-weather-info {
   padding: 0 10px;
-  max-width: 450px;
 }
 
 .city-name {
@@ -143,10 +142,10 @@ h4 {
   background: #3c4cac !important;
 }
 .white-font {
-  color: #f8f8f8 !important;
+  color: #ecebe9 !important;
 }
 .grey-font {
-  color: #787878 !important;
+  color: #736a62 !important;
 }
 .fa-circle {
   background-color: #fff !important;
@@ -157,12 +156,13 @@ h4 {
 }
 .wind,
 .rain {
-  margin: 15px 0;
+  margin: 15px 15px 15px 0;
 }
 .search-current,
 .input-group-append {
   display: inline;
 }
+
 .footer {
   font-size: 11px;
   font-family: "M PLUS Rounded 1c", sans-serif;
