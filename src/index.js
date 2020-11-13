@@ -1,7 +1,7 @@
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
-  hours = hours -1;
+  hours = hours;
   let minutes = date.getMinutes();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -25,7 +25,7 @@ function formatDate(timestamp) {
 function getLocationTime(response){
   let currentDate = document.querySelector("#date-today");
   console.log(response.data)
-  currentDate.innerHTML = formatDate((response.data.timestamp *1000));
+  currentDate.innerHTML = formatDate(response.data.formatted);
 }
 
 function formatForecastDate (timestamp) {
