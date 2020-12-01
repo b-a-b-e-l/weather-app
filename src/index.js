@@ -24,7 +24,6 @@ function formatDate(timestamp) {
 
 function getLocationTime(response){
   let currentDate = document.querySelector("#date-today");
-  console.log(response.data)
   currentDate.innerHTML = formatDate(response.data.formatted);
 }
 
@@ -44,7 +43,6 @@ function formatForecastDate (timestamp) {
 }
 
 function showWeatherValues(response) {
-  console.log(response.data)
   cityCurrent.innerHTML = response.data.name;
   celciusTempreatureNow = response.data.main.temp
   let temperatureNow = document.querySelector("#temperature-now");
